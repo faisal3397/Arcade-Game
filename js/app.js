@@ -34,7 +34,7 @@ class Enemy{
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
-
+        this.x += 0.5
     }
 
     render(){
@@ -103,10 +103,15 @@ class Player{
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const player = new Player(200,400)
-const enemy = new Enemy(0,200,100)
+const enemy = new Enemy(0,50,0)
+const enemy1 = new Enemy(0,150,0)
+const enemy2 = new Enemy(0,250,0)
 var allEnemies = []
 var allPlayers = []
 allEnemies.push(enemy)
+allEnemies.push(enemy1)
+allEnemies.push(enemy2)
+
 
 
 // This listens for key presses and sends the keys to your
