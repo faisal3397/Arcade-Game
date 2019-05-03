@@ -34,7 +34,23 @@ class Enemy{
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
-        this.x += 0.5
+        
+        this.x += (dt * this.speed)
+
+        if(this.x >= 400){
+            this.x = 0
+        }
+        allEnemies.forEach(el => { //to check with all the enemies
+            let intX = Math.round( el.x ) //first we have to convert it to int so we can compare with the player's location
+            let intY = Math.round( el.y )
+            if(this.x == intX && this.y == intY){ //Handling Collision with the enemy
+                player.x = 200
+                player.y = 400
+                console.log('collision');
+                
+            }
+
+        })
     }
 
     render(){
@@ -60,7 +76,17 @@ class Player{
         // all computers.
         
         
-        
+        allEnemies.forEach(el => { //to check with all the enemies
+            let intX = Math.round( el.x ) //first we have to convert it to int so we can compare with the player's location
+            let intY = Math.round( el.y )
+            if(this.x == intX && this.y == intY){ //Handling Collision with the enemy
+                this.x = 200
+                this.y = 400
+                console.log('collision');
+                
+            }
+
+        })
     }
 
     render(){
@@ -82,19 +108,13 @@ class Player{
             this.x = this.x - 100
         }
 
-        if(this.x == enemy.x && this.y == enemy.y){ //Handling Collision with the enemy
-            this.x = 200
-            this.y = 400
-            console.log('collision');
-            
-        }
 
-        if(this.y == 0){
+        if(this.y == 0){//Winning Condition
             this.x = 200
             this.y = 400
             console.log('you win!!!');
         }
-
+        
         
     }
 }
@@ -103,14 +123,13 @@ class Player{
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const player = new Player(200,400)
-const enemy = new Enemy(0,50,0)
-const enemy1 = new Enemy(0,150,0)
-const enemy2 = new Enemy(0,250,0)
+const enemy = new Enemy(0,100,100)
+const enemy1 = new Enemy(0,200,50)
+
 var allEnemies = []
 var allPlayers = []
 allEnemies.push(enemy)
 allEnemies.push(enemy1)
-allEnemies.push(enemy2)
 
 
 
