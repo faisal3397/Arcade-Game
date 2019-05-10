@@ -68,6 +68,7 @@ class Player{
         
         allEnemies.forEach(el => { //to check with all the enemies
             let intX = Math.round( el.x ) //first we have to convert it to int so we can compare with the player's location
+            intX = Math.ceil(intX/100)*100
             if(this.x == intX && this.y == el.y){ //Handling Collision with the enemy
                 this.x = 200
                 this.y = 400
