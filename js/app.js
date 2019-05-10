@@ -40,17 +40,7 @@ class Enemy{
         if(this.x >= 400){
             this.x = 0
         }
-        allEnemies.forEach(el => { //to check with all the enemies
-            let intX = Math.round( el.x ) //first we have to convert it to int so we can compare with the player's location
-            let intY = Math.round( el.y )
-            if(this.x == intX && this.y == intY){ //Handling Collision with the enemy
-                player.x = 200
-                player.y = 400
-                console.log('collision');
-                
-            }
 
-        })
     }
 
     render(){
@@ -70,7 +60,7 @@ class Player{
         this.y = y
     }
 
-    update(dt){
+    update(){
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
@@ -78,8 +68,7 @@ class Player{
         
         allEnemies.forEach(el => { //to check with all the enemies
             let intX = Math.round( el.x ) //first we have to convert it to int so we can compare with the player's location
-            let intY = Math.round( el.y )
-            if(this.x == intX && this.y == intY){ //Handling Collision with the enemy
+            if(this.x == intX && this.y == el.y){ //Handling Collision with the enemy
                 this.x = 200
                 this.y = 400
                 console.log('collision');
